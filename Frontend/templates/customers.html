@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>All Customers</h2>
+
+<a href="/order/customers/add">
+    <button>Add Cutomers</button>
+</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Customers Name</th>
+            <th>Customers Since</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customers in all_customers %}
+        <tr>
+            <td>{{ customers.customer_name }}</td>
+            <td>{{ customers.customer_since }}</td>
+            <td>
+                <a href="{% url 'Update_customer' customers.id %}">
+                    <button>Update</button>
+                </a>
+                </td>
+            <td>
+            <a href="{% url 'Delete_customer' customers.id %}">
+                <button>Delete</button>
+            </a>
+            </td>    
+            
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}
